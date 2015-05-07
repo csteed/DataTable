@@ -1,4 +1,4 @@
-package data;
+package gov.ornl.datatable;
 
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;

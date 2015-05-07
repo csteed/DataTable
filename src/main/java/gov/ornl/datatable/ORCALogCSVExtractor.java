@@ -1,4 +1,4 @@
-package data;
+package gov.ornl.datatable;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;

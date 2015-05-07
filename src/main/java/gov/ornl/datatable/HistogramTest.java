@@ -1,4 +1,4 @@
-package data;
+package gov.ornl.datatable;
 
 import gov.ornl.edenx.Utilities;
 

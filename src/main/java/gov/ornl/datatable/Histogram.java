@@ -1,4 +1,4 @@
-package data;
+package gov.ornl.datatable;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

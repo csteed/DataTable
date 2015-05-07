@@ -1,4 +1,4 @@
-package data;
+package gov.ornl.datatable;
 
 /**
  * Created by csg on 11/25/14.

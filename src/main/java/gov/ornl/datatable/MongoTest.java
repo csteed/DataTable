@@ -1,4 +1,4 @@
-package data;
+package gov.ornl.datatable;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;

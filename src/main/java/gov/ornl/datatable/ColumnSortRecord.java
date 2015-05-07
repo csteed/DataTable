@@ -1,4 +1,4 @@
-package data;
+package gov.ornl.datatable;
 
 public class ColumnSortRecord implements Comparable<ColumnSortRecord> {
 	public Column column;
