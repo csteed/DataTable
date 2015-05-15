@@ -1161,8 +1161,6 @@ public class DataModel {
 			return;
 		}
 
-		boolean querySet = true;
-
 		if (!activeQuery.getColumnSelections().isEmpty()) {
 			for (int ituple = 0; ituple < getTupleCount(); ituple++) {
 				Tuple currentTuple = getTuple(ituple);
@@ -1215,6 +1213,10 @@ public class DataModel {
 
 			calculateQueryStatistics();
 			fireQueryChanged();
+		} else {
+			for (Tuple tuple : tuples) {
+				tuple.setQueryFlag(true);
+			}
 		}
 //		if (querySet) {
 //			for (int ituple = 0; ituple < getTupleCount(); ituple++) {
