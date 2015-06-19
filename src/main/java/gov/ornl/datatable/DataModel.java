@@ -80,8 +80,6 @@ public class DataModel {
         fireDataModelChanged();
     }
 
-
-
 	public boolean isEmpty() {
 		return tuples.isEmpty();
 	}
@@ -782,7 +780,10 @@ public class DataModel {
 		if (columnSelection.getColumnSelectionRangeCount() == 0) {
 			activeQuery.clearColumnSelection(columnSelection.getColumn());
 		}
-		fireQueryChanged();
+		
+		setQueriedTuples();
+		this.fireColumnSelectionRemoved(selectionRange);
+//		fireQueryChanged();
 	}
 
     public int removeUnselectedTuples() {
@@ -914,7 +915,8 @@ public class DataModel {
 
 		ColumnSelectionRange selectionRange = columnSelection.addColumnSelectionRange(minValue, maxValue);
 
-		fireQueryChanged();
+		fireColumnSelectionAdded(selectionRange);
+//		fireQueryChanged();
 		return selectionRange;
 	}
 
@@ -1127,6 +1129,18 @@ public class DataModel {
 		}
 	}
 
+	public void fireColumnSelectionAdded(ColumnSelectionRange columnSelectionRange) {
+		for (DataModelListener listener : listeners) {
+			listener.dataModelColumnSelectionAdded(this, columnSelectionRange);
+		}
+	}
+	
+	public void fireColumnSelectionRemoved(ColumnSelectionRange columnSelectionRange) {
+		for (DataModelListener listener : listeners) {
+			listener.dataModelColumnSelectionRemoved(this, columnSelectionRange);
+		}
+	}
+	
 	public void fireQueryChanged() {
 		for (DataModelListener listener : listeners) {
 			listener.queryChanged(this);
@@ -1153,7 +1167,7 @@ public class DataModel {
 //	}
 
 	public void setQueriedTuples() {
-//		log.debug("setting queried tuples");
+		log.debug("setting queried tuples");
 //		queriedTuples.clear();
 		activeQuery.clearTuples();
 
@@ -1170,8 +1184,6 @@ public class DataModel {
 					Column column = columns.get(icolumn);
 					ColumnSelection columnSelection = activeQuery.getColumnSelection(column);
 					if (columnSelection != null && !columnSelection.getColumnSelectionRanges().isEmpty()) {
-
-
 //						int selectionRangeIntersections = 0;
 						boolean insideSelection = false;
 //
@@ -1245,5 +1257,7 @@ public class DataModel {
 //		}
 
 		log.debug("Finished setting queried tuples");
+		log.debug("ActiveQuery has " + activeQuery.getTuples().size() + " tuples");
+		log.debug("ActiveQuery has column Selections " + activeQuery.hasColumnSelections());
 	}
 }
