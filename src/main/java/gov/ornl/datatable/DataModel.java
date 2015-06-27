@@ -273,6 +273,7 @@ public class DataModel {
 	}
 
 	private void calculateQueryStatistics() {
+		log.debug("Entered calculate query stats");
 		double[][] data = new double[columns.size()][];
 
 		for (int icolumn = 0; icolumn < columns.size(); icolumn++) {

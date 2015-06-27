@@ -45,6 +45,7 @@ public class Query {
 
     public void clearTuples() {
         tuples.clear();
+        columnQuerySummaryStatsMap.clear();
     }
 
     public ArrayList<Tuple> getTuples() {
