@@ -18,6 +18,8 @@ public class SummaryStats {
     private float kurtosis;
     private float upperWhisker;
     private float lowerWhisker;
+    private int numNaN = 0;
+
     private ArrayList<Float> corrCoefs = new ArrayList<Float>();
     private Histogram histogram;
 

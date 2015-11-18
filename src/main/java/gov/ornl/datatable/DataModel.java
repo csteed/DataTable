@@ -223,7 +223,7 @@ public class DataModel {
         if (histogramBinSize > MAX_NUM_HISTOGRAM_BINS) {
             histogramBinSize = MAX_NUM_HISTOGRAM_BINS;
         }
-//        log.debug("histogram bin size is " + histogramBinSize);
+
 		highlightedColumn = null;
 		this.tuples.clear();
 		this.tuples.addAll(tuples);
@@ -231,8 +231,6 @@ public class DataModel {
 		this.columns.clear();
 		this.columns.addAll(columns);
 		this.disabledColumns.clear();
-//		this.queriedTuples.clear();
-//		this.queriedTuples.addAll(tuples);
 		this.regression = null;
 		this.regressionYColumn = null;
 		this.highlightedColumn = null;
@@ -250,7 +248,6 @@ public class DataModel {
 	public void clear() {
 		tuples.clear();
         disabledColumnTuples.clear();
-//		this.queriedTuples.clear();
 		clearActiveQuery();
 		this.columns.clear();
 		this.disabledColumns.clear();
@@ -414,6 +411,15 @@ public class DataModel {
 			Column column = columns.get(icolumn);
 
 			data[icolumn] = getColumnValues(icolumn);
+
+			int nanCounter = 0;
+			for (double value : data[icolumn]) {
+				if (Double.isNaN(value)) {
+					nanCounter++;
+				}
+			}
+
+			log.debug("Number of NaN values for column " + column.getName() + " is " + nanCounter);
 
 			// calculate descriptive statistics
 			DescriptiveStatistics stats = new DescriptiveStatistics(data[icolumn]);
