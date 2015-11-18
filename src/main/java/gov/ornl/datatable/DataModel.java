@@ -412,14 +412,14 @@ public class DataModel {
 
 			data[icolumn] = getColumnValues(icolumn);
 
-			int nanCounter = 0;
-			for (double value : data[icolumn]) {
-				if (Double.isNaN(value)) {
-					nanCounter++;
-				}
-			}
-
-			log.debug("Number of NaN values for column " + column.getName() + " is " + nanCounter);
+//			int nanCounter = 0;
+//			for (double value : data[icolumn]) {
+//				if (Double.isNaN(value)) {
+//					nanCounter++;
+//				}
+//			}
+//
+//			log.debug("Number of NaN values for column " + column.getName() + " is " + nanCounter);
 
 			// calculate descriptive statistics
 			DescriptiveStatistics stats = new DescriptiveStatistics(data[icolumn]);
